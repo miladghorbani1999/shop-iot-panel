@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Bavix\Wallet\Interfaces\Wallet;
+use Bavix\Wallet\Traits\HasWallet;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,10 +18,10 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable implements MustVerifyEmail, HasMedia
+class User extends Authenticatable implements MustVerifyEmail, HasMedia, Wallet
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, MustVerifyNewEmail, InteractsWithMedia;
-
+    use HasWallet;
     protected array $guard_name = ['sanctum', 'web'];
 
     /**
