@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Rfid;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -22,6 +24,7 @@ class UserController extends Controller
     {
         $this->authorizeResource(User::class, 'user');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +51,7 @@ class UserController extends Controller
         $sort = $request->get('sort');
 
         $users = QueryBuilder::for(User::class)
-            ->allowedSorts(['name', 'email','phone', 'post_code', 'city', 'country'])
+            ->allowedSorts(['name', 'email', 'phone', 'post_code', 'city', 'country'])
             ->where('name', 'like', "%$q%")
             ->orWhere('email', 'like', "%$q%")
             ->withoutAuthUser()
@@ -74,12 +77,12 @@ class UserController extends Controller
     {
         $breadcrumbsItems = [
             [
-                'name' => 'Users',
+                'name' => __('Users'),
                 'url' => route('users.index'),
                 'active' => false
             ],
             [
-                'name' => 'Create',
+                'name' => __('Create'),
                 'url' => route('users.create'),
                 'active' => true
             ],
@@ -89,14 +92,14 @@ class UserController extends Controller
         return view('users.create', [
             'roles' => $roles,
             'breadcrumbItems' => $breadcrumbsItems,
-            'pageTitle' => 'Create User'
+            'pageTitle' => __('Create User')
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreUserRequest  $request
+     * @param StoreUserRequest $request
      * @return RedirectResponse
      *
      */
@@ -109,13 +112,21 @@ class UserController extends Controller
             ]);
         $user->assignRole([$request->validated('role')]);
 
+        Rfid::query()
+            ->updateOrCreate([
+                'code' => $request->input('rfid'),
+            ], [
+                'uuid' => Str::ulid(),
+                'user_id' => $user->id
+            ]);
+
         return redirect()->route('users.index')->with('message', 'User created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  User  $user
+     * @param User $user
      * @return Application|Factory|View
      *
      */
@@ -144,7 +155,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  User  $user
+     * @param User $user
      * @return Application|Factory|View
      *
      */
@@ -176,8 +187,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateUserRequest  $request
-     * @param  User  $user
+     * @param UpdateUserRequest $request
+     * @param User $user
      * @return RedirectResponse
      *
      */
@@ -188,13 +199,20 @@ class UserController extends Controller
 
         $user->syncRoles([$request->validated(['role'])]);
 
+        Rfid::query()
+            ->updateOrCreate([
+                'code' => $request->input('rfid'),
+            ], [
+                'uuid' => Str::ulid(),
+                'user_id' => $user->id
+            ]);
         return redirect()->route('users.index')->with('message', 'User updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  User  $user
+     * @param User $user
      * @return RedirectResponse
      *
      */

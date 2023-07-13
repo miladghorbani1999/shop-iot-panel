@@ -78,6 +78,8 @@
     "Member Since": "اخرین بازدبد",
     "Module Name": "اسم ماٰ‌ٰٰٰژول",
     "NAME": "نام",
+    "Create": "ایجاد",
+    "Create User": "ایجاد کاربر",
     "NEWEST BACKUP": "جدیدترین نسخه پشتیبان",
     "NO": "نه",
     "Name": "نام",
@@ -173,5 +175,9 @@
     "success": "success",
     "to": "to",
     "Sign in to your account to start using Dashcode": "برای استفاده از داشبورد وارد اکانت خود شوید",
-    "Please check your email to verify your new email address. You cant use your new email to login until you verify it.":"Please check your email to verify your new email address. You cant use your new email to login until you verify it."
+    "Please check your email to verify your new email address. You cant use your new email to login until you verify it.":"Please check your email to verify your new email address. You cant use your new email to login until you verify it.",
+    "rfid code": "کد rfid",
+    "Waite for rfid": "کارت rfid به دستگاه نزدیک کنید.",
+    "Waite for rfid retry": "کارت rfid دوباره به دستگاه نزدیک کنید.",
+    "rfid has receive": "rfid دریافت شد"
 }
