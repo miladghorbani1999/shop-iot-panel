@@ -37,6 +37,14 @@
                     </span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('wallets.index') }}" class="navItem {{ (request()->is('wallets*')) ? 'active' : '' }}">
+                    <span class="flex items-center">
+                        <iconify-icon class=" nav-icon" icon="heroicons-outline:user"></iconify-icon>
+                        <span>{{ __('Wallets') }}</span>
+                    </span>
+                </a>
+            </li>
             <!-- Database -->
             <li>
                 <a href="{{ route('database-backups.index') }}" class="navItem {{ (request()->is('database-backups*')) ? 'active' : '' }}">

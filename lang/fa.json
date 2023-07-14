@@ -179,5 +179,15 @@
     "rfid code": "کد rfid",
     "Waite for rfid": "کارت rfid به دستگاه نزدیک کنید.",
     "Waite for rfid retry": "کارت rfid دوباره به دستگاه نزدیک کنید.",
-    "rfid has receive": "rfid دریافت شد"
+    "rfid has receive": "rfid دریافت شد",
+    "Wallets": "کیف پول",
+    "Current balance":"موجودی",
+    "Inventory Increment": "افزایش موجودی",
+    "For Increment Wallet Click": "برای افزایش موجودی کلیک کنید.",
+    "Increment": "افزایش",
+    "Charge the account": "شارژ حساب",
+    "Amount": "مقدار",
+    "Pay": "پرداخت",
+    "Enter your amount for increment account": "مقدار افزایش اکانت به تومان وارد کنید."
+
 }

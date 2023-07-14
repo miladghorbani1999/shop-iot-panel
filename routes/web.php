@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     // User
     Route::resource('users', UserController::class);
+    //wallets
+    Route::resource('wallets', \App\Http\Controllers\WalletController::class);
     // Permission
     Route::resource('permissions', PermissionController::class)->except(['show']);
     // Roles
