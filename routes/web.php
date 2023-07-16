@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\ChartController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppsController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ComponentsController;
+use App\Http\Controllers\DatabaseBackupController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\TableController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileProductController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SetLocaleController;
+use App\Http\Controllers\TableController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilityController;
 use App\Http\Controllers\WidgetsController;
-use App\Http\Controllers\SetLocaleController;
-use App\Http\Controllers\ComponentsController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\DatabaseBackupController;
-use App\Http\Controllers\GeneralSettingController;
+use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
@@ -31,6 +32,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     // User
     Route::resource('users', UserController::class);
+    //product bought
+    Route::get('profile/product', [ProfileProductController::class, 'index'])->name('product-profile.index');
     //wallets
     Route::resource('wallets', \App\Http\Controllers\WalletController::class);
     // Permission

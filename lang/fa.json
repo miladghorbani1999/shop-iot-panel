@@ -188,6 +188,9 @@
     "Charge the account": "شارژ حساب",
     "Amount": "مقدار",
     "Pay": "پرداخت",
-    "Enter your amount for increment account": "مقدار افزایش اکانت به تومان وارد کنید."
+    "Enter your amount for increment account": "مقدار افزایش اکانت به تومان وارد کنید.",
+    "product bought": "محصولات خریداری شده",
+    "Title_fa": "نام محصول",
+    "Price": "قیمت"
 
 }

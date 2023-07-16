@@ -60,13 +60,13 @@
 @stack('scripts')
 </body>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var htmlTag = document.getElementsByTagName('html')[0];
-        var lang = document.getElementById('lang').value;
-        if (lang == 'fa') {
-            htmlTag.setAttribute('dir', 'rtl');
-
-        }
-    });
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     var htmlTag = document.getElementsByTagName('html')[0];
+    //     var lang = document.getElementById('lang').value;
+    //     if (lang == 'fa') {
+    //         htmlTag.setAttribute('dir', 'rtl');
+    //
+    //     }
+    // });
 </script>
 </html>

@@ -219,6 +219,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        \App\Providers\ShopServiceProvider::class,
+        \App\Providers\DigikalaServiceProvider::class
     ],
 
     /*

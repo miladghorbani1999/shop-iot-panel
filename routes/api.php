@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\EnvironmentController;
 use App\Http\Controllers\Api\GeneralSettingsController;
 use App\Http\Controllers\Api\GeneralSettingsMediaController;
 use App\Http\Controllers\Api\PermissionController;
+use App\Http\Controllers\Api\ProductBuyController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ProductListController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RfidApiController;
 use App\Http\Controllers\Api\RoleController;
@@ -56,3 +59,7 @@ Route::get('general-settings', GeneralSettingsController::class);
 
 Route::get('rfid', [RfidApiController::class, 'show'])->name('api-rfid.show');
 Route::get('rfid/{string}', [RfidApiController::class, 'index'])->name('api-rfid.index');
+Route::get('products', [ProductController::class, 'index'])->name('product.index');
+Route::get('list-products', [ProductListController::class, 'index'])->name('list-product.index');
+Route::get('list-products/{product}', [ProductListController::class, 'show'])->name('list-product.show');
+Route::post('buy', [ProductBuyController::class, 'store'])->name('product-buy');

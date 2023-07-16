@@ -7,6 +7,7 @@ use Bavix\Wallet\Traits\HasWallet;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -92,6 +93,17 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia, Wallet
     {
         return $query->where('id', '!=', 1);
     }
-
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Product::class
+            , 'product_user'
+            ,'user_id'
+            ,'product_id'
+        )->withPivot([
+            'title_fa',
+            'price'
+        ]);
+    }
 
 }
